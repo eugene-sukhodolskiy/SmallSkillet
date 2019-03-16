@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Example</title>
+		<style>
+			code{
+				display: block;
+				padding: 15px !important;
+			}
+
+			dt{
+				font-weight: bold;
+				font-size: 18px;
+				padding: 10px;
+			}
+		</style>
+		<link rel="stylesheet" href="prism/prism.css">
+	</head>
+	<body>
+		<h1 class="title">Hi! I`m SmallSkillet</h1>
+		<h3 class="description">This is "ss" docs (v0.1.0)</h3>
+		<pre>
+		<dl>
+			<dt>.last()</dt>
+			<dd>
+				<code class="language-js">[42, 'this', 'is', 'life'].last(); // 'life' <br>
+					// OR
+					let arr = [42, 'this', 'is', 'life']; <br>
+					arr.last('code'); <br>
+					console.log(arr); // [42, 'this', 'is', 'code']
+				</code>
+			</dd>
+
+			<dt>.first()</dt>
+			<dd>
+				<code class="language-js">[42, 'this', 'is', 'life'].first(); // 42</code>
+			</dd>
+
+			<dt>.each()</dt>
+			<dd>
+				<code class="language-js">
+					let arr = [42, 'this', 'is', 'life'].each(i, item => { <br>
+						console.log(item); // show element <br>
+					});
+				</code>
+			</dd>
+
+			<dt>.log()</dt>
+			<dd>
+				<code class="language-js">
+					[1, 2, 3].log(); // show array to console
+				</code>
+			</dd>
+
+			<dt>.different(arr)</dt>
+			<dd>
+				<code class="language-js">
+					[1, 2, 3].different([1, 5, 3]); // [2, 5]
+				</code>
+			</dd>
+
+			<dt>ss('.css.selector')</dt>
+			<dd>
+				<code class="language-js">
+					ss('.css.selector'); // returned array with nodes
+				</code>
+			</dd>
+
+			<dt>ss.get(url, callback, catch)</dt>
+			<dd>
+				<code class="language-js">
+					ss.get('https://give.me/json', response => { <br>
+						response.log(); // response from server, log console<br>
+					}, err => { <br>
+						err.log(); // error <br>
+					}); // this is get request to server
+				</code>
+			</dd>
+
+			<dt>ss.post(url, data, callback, catch)</dt>
+			<dd>
+				<code class="language-js">
+					let data = {"name": "Adolf"} <br>
+					ss.post('https://give.me/json', data, response => { <br>
+						response.log(); // response from server, log console<br>
+					}, err => { <br>
+						err.log(); // error <br>
+					}); // this is post request with data to server
+				</code>
+			</dd>
+
+			<dt>.clone(obj)</dt>
+			<dd>
+				<code class="language-js">
+					let a1 = {title: "My array", meth: () => { <br>
+						this.title.log(); <br>
+					}}; <br>
+					let a2 = a1.clone(); <br>
+					a2.log(); // {title: "My array"}
+				</code>
+			</dd>
+
+			<dt>.compare(obj)</dt>
+			<dd>
+				<code class="language-js">
+					let a1 = {title: "My array", id: 3}; <br>
+					let a2 = a1.clone(); <br>
+					let a3 = {title: "Not found"}; <br>
+					let a4 = {title: "Not found", meth: () => {}}; <br>
+					a1.compare(a2); // true <br>
+					a2.compare(a1); // true <br>
+					a1.compare(a3); // false <br>
+					a2.compare(a3); // false <br>
+					a3.compare(a4); // true <br>
+				</code>
+			</dd>
+
+			<dt>.props(obj)</dt>
+			<dd>
+				<code class="language-js">
+					let a1 = {title: "My array", id: 3}; <br>
+					a1.props().log(); // ['title', 'id']
+				</code>
+			</dd>
+
+			<!-- DOM -->
+			<dt>.addClass(className)</dt>
+			<dd>
+				<code class="language-js">
+					ss('.good.selector').last().addClass('disable'); <br>
+				</code>
+			</dd>
+
+			<dt>.removeClass(className)</dt>
+			<dd>
+				<code class="language-js">
+					ss('.good.selector').first().removeClass('good'); <br>
+				</code>
+			</dd>
+
+			<dt>.toggleClass(className)</dt>
+			<dd>
+				<code class="language-js">
+					ss('.good.selector').first().toggleClass('good'); <br>
+				</code>
+			</dd>
+
+			<dt>.hasClass(className)</dt>
+			<dd>
+				<code class="language-js">
+					ss('.good.selector').first().hasClass('good'); // returned true <br>
+				</code>
+			</dd>
+
+			<dt>.append(element)</dt>
+			<dd>
+				<code class="language-js">
+					ss('body').append(elementORText);<br>
+				</code>
+			</dd>
+
+			<dt>.prepend(element)</dt>
+			<dd>
+				<code class="language-js">
+					ss('body').prepend(elementORText);<br>
+				</code>
+			</dd>
+
+			<dt>.on(eventName, listener)</dt>
+			<dd>
+				<code class="language-js">
+					ss('.btn').on('click', () => { <br>
+						this.log(); // If you click on .btn - you will see .btn node in console <br>
+					});<br>
+				</code>
+			</dd>
+
+			<dt>.find(selector)</dt>
+			<dd>
+				<code class="language-js">
+					ss('.container').first().find('h1'); // search element h1 in .container<br>
+				</code>
+			</dd>
+
+			<dt>.attr(attributeName, [value])</dt>
+			<dd>
+				<code class="language-js">
+					ss('.container').first().attr('class'); // returned value of attribute "class"<br>
+					ss('.container').first().attr('class', 'no-container'); // set no-container to attribute of class<br>
+				</code>
+			</dd>
+
+			<dt>.hasAttr(attributeName)</dt>
+			<dd>
+				<code class="language-js">
+					ss('.container').first().hasAttr('class'); // returned true, if .container has attribute "class"<br>
+				</code>
+			</dd>
+
+			<dt>.show()</dt>
+			<dd>
+				<code class="language-js">
+					ss('.container').first().show(); // show element on display<br>
+				</code>
+			</dd>
+
+			<dt>.hide()</dt>
+			<dd>
+				<code class="language-js">
+					ss('.container').first().hide(); // hide element from display<br>
+				</code>
+			</dd>
+
+			<dt>.parent()</dt>
+			<dd>
+				<code class="language-js">
+					ss('.container').first().parent(); // returned parentNode<br>
+				</code>
+			</dd>
+
+			<dt>.parent()</dt>
+			<dd>
+				<code class="language-js">
+					ss('.container').first().parent(); // returned parentNode<br>
+				</code>
+			</dd>
+
+			<dt>.ss(var1, var2, ...)</dt>
+			<dd>
+				<code class="language-js">
+					"My name is {0}, I live in {1}".ss("Adolf", "Germany").log(); // show "My name is Adolf, I live in Germany" <br>
+				</code>
+			</dd>
+		</dl>
+	</pre>
+
+		<script src="../dist/ss.js"></script>
+		<script src="prism/prism.js" data-manual></script>
+		<script>
+			window.onload = function(){
+				console.log(Prism);
+				Prism.highlightAll(true, () => {})
+			}
+		</script>
+	</body>
+</html>
