@@ -1,1 +1,1 @@
-Docs v0.1.0 https://eugene-sukhodolskiy.github.io/SmallSkillet/0.1.0/docs/
+Docs v0.1.1 https://eugene-sukhodolskiy.github.io/SmallSkillet/0.1.0/docs/
